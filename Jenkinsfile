@@ -15,9 +15,10 @@ pipeline {
         stage('ConexionAWS'){
 	   steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-amazon', keyFileVariable: '', usernameVariable: 'ec2-user')]) {
-                sh 'echo hola'
-                sh 'cat /etc/issue'
-		}
+                
+                sh 'echo $PASSWORD'
+		echo USERNAME
+                }
            }
 	}
 
