@@ -16,6 +16,7 @@ pipeline {
 	   steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-amazon', keyFileVariable: '', usernameVariable: 'ec2-user')]) {
                 sh 'echo hola'
+                sh 'cat /etc/issue'
 		}
            }
 	}
