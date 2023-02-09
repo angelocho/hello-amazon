@@ -24,7 +24,7 @@ pipeline {
         stage('ConexionAWS'){
 	   steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-amazon', keyFileVariable: 'AWS_SSH_KEY', usernameVariable: 'ec2-user')]) {
-                   sh "ssh -i $AWS_SSH_KEY ec2-user@34.244.177.29 'docker pull ghcr.io/angelocho/hello-amazon/hello-amazon:v1 && docker run -td --rm -p 80:80 ghcr.io/angelocho/hello-amazon/hello-amazon:v1'
+                   sh "ssh -i $AWS_SSH_KEY ec2-user@34.244.177.29 'docker pull ghcr.io/angelocho/hello-amazon/hello-amazon:v1 && docker run -td --rm -p 80:80 ghcr.io/angelocho/hello-amazon/hello-amazon:v1'"
                 }
            }
 	}
