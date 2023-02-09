@@ -10,10 +10,8 @@ pipeline {
         stage('building') {
             steps {
                 sh 'docker-compose build'
-                sshagent(['clave-angel']) {
                 sh "git tag 1.0.${BUILD_NUMBER}"
                 sh "git push --tags"
-                }
                 sh "docker tag ghcr.io/angelocho/hello-amazon:latest ghcr.io/angelocho/hello-amazon:1.0.${BUILD_NUMBER}"
             }
         }
