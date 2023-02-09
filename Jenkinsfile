@@ -24,7 +24,7 @@ pipeline {
         stage('ConexionAWS'){
 	   steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-amazon', keyFileVariable: 'AWS_SSH_KEY')]) {
-                   sh "ssh -i $AWS_SSH_KEY ec2-user@ec2-34-244-177-29.eu-west-1.compute.amazonaws.com 'docker pull ghcr.io/angelocho/hello-amazon/hello-amazon:v1 && docker run -td --rm -p 80:80 ghcr.io/angelocho/hello-amazon/hello-amazon:v1'"
+                   sh "ssh -o "StrictHostKeyChecking no" -i $AWS_SSH_KEY ec2-user@ec2-34-244-177-29.eu-west-1.compute.amazonaws.com 'docker pull ghcr.io/angelocho/hello-amazon/hello-amazon:v1 && docker run -td --rm -p 80:80 ghcr.io/angelocho/hello-amazon/hello-amazon:v1'"
                 }
            }
 	}
