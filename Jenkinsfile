@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'docker-compose build'
                 sh 'git tag 1.0.${BUILD_NUMBER}'
-		sshagent(['ssh-amazon']) {
+		sshagent(['clave-sinensia']) {
                 	sh 'git push --tags'
                 }
                 sh "docker tag ghcr.io/angelocho/hello-amazon/hello-amazon:latest ghcr.io/angelocho/hello-amazon:1.0.${BUILD_NUMBER}"
