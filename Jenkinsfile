@@ -25,7 +25,7 @@ pipeline {
 	   steps {
 		sshagent(['ssh-amazon']) {
                    sh """
-                      ssh ec2-user@ec2-34-244-177-29.eu-west-1.compute.amazonaws.com 'docker pull ghcr.io/angelocho/hello-amazon/hello-amazon:v1 && docker run -td --rm -p 80:80 ghcr.io/angelocho/hello-amazon/hello-amazon:v1'
+                      ssh -o "StrictHostKeyChecking no" ec2-user@ec2-34-244-177-29.eu-west-1.compute.amazonaws.com 'docker-compose pull && docker-compose up -d '
                    """
                 }
            }
