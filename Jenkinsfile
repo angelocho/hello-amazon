@@ -10,7 +10,7 @@ pipeline {
         stage('building') {
             steps {
                 sh 'docker-compose build'
-                sh "docker tag ghcr.io/angelocho/hello-amazon:latest ghcr.io/angelocho/hello-amazon:1.0.${BUILD_NUMBER}"
+                sh "docker tag ghcr.io/angelocho/hello-amazon/hello-amazon:latest ghcr.io/angelocho/hello-amazon:1.0.${BUILD_NUMBER}"
             }
         }
         stage('Dockerlogin'){
